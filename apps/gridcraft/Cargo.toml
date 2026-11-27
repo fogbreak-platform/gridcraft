@@ -5,7 +5,7 @@ edition.workspace = true
 license.workspace = true
 publish = false
 default-run = "gridcraft"
-description = "GridCraft desktop app"
+description = "Fogbreak Grid desktop app"
 
 [lints]
 workspace = true

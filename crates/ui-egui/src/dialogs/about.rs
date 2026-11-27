@@ -21,9 +21,9 @@ pub(super) fn about(ui: &mut egui::Ui, d: &mut Dialog) {
                 ui.label(egui::RichText::new(format!("Built from {commit}")).small());
             }
             ui.add_space(4.0);
-            ui.label("A clean-room, open-source, Rust-native spreadsheet. Part of ArtCraft.");
-            ui.hyperlink_to("getartcraft.com/apps/gridcraft", "https://getartcraft.com/apps/gridcraft");
-            ui.hyperlink_to("Join the ArtCraft Discord", "https://discord.gg/artcraft");
+            ui.label("A clean-room, open-source, Rust-native spreadsheet. Part of Fogbreak.");
+            ui.hyperlink_to("fogbreak.io", "https://fogbreak.io");
+            ui.hyperlink_to("Source on GitHub", "https://github.com/fogbreak-platform/gridcraft");
         }
     }
 }

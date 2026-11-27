@@ -42,14 +42,14 @@ impl SheetApp {
         // Never from the nightly channel: a check would download into, and record in, the stable
         // app's folders, and an install would replace a Launcher-managed copy.
         if !crate::channel::stable_services_allowed() {
-            self.message = Some((crate::channel::name().into(), "GridCraft Nightly is updated by ArtCraft Launcher.".into()));
+            self.message = Some((crate::channel::name().into(), "Fogbreak Grid Nightly is updated by the desktop launcher.".into()));
             return;
         }
         #[cfg(not(target_arch = "wasm32"))]
         updates_ui::start(self, true);
         #[cfg(target_arch = "wasm32")]
         {
-            self.message = Some(("GridCraft".into(), "The web version is always the latest release.".into()));
+            self.message = Some(("Fogbreak Grid".into(), "The web version is always the latest release.".into()));
         }
     }
 

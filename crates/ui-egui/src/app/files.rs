@@ -9,7 +9,7 @@ impl SheetApp {
             Err(e) if e.contains(gridcraft_engine::io::MODIFY_PASSWORD_REQUIRED) => {
                 self.open_dialog("openPassword", json!({"path": path, "modify": true}))
             }
-            Err(e) => self.message = Some(("GridCraft".into(), clean_error(&e))),
+            Err(e) => self.message = Some(("Fogbreak Grid".into(), clean_error(&e))),
         }
         self.after_engine();
     }
@@ -51,7 +51,7 @@ impl SheetApp {
             let text = if dropped {
                 "This workbook's VBA macros could not be loaded and were dropped, so they will not be in the saved file. Keep the original file."
             } else {
-                "This workbook contains VBA macros. GridCraft keeps them when you save as .xlsm, but does not run them."
+                "This workbook contains VBA macros. Fogbreak Grid keeps them when you save as .xlsm, but does not run them."
             };
             self.notice = Some(Notice { text: text.into(), kind: NoticeKind::Warning, action: Some(("What this means".into(), "macros".into())) });
         } else {
@@ -102,7 +102,7 @@ impl SheetApp {
                     self.backstage = None;
                     self.open_dialog("openPassword", json!({"name": name, "base64": b64, "modify": true}));
                 }
-                Err(e) => self.message = Some(("GridCraft".into(), clean_error(&e))),
+                Err(e) => self.message = Some(("Fogbreak Grid".into(), clean_error(&e))),
             }
             self.after_engine();
         }

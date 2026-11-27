@@ -30,8 +30,6 @@ fn main() {
             std::process::exit(1);
         }
     };
-    println!("cargo:rerun-if-changed=../../assets/app-icon/gridcraft.ico");
-    println!("cargo:rerun-if-changed=../../assets/app-icon/gridcraft-nightly.ico");
     println!("cargo:rerun-if-env-changed=GRIDCRAFT_REQUIRE_WINRES");
     println!("cargo:rerun-if-env-changed=GRIDCRAFT_VERSION");
     let built_version = if nightly {
@@ -51,11 +49,14 @@ fn main() {
         return;
     }
     let mut res = winresource::WindowsResource::new();
-    res.set_icon(build_channel::windows_icon_path(nightly))
-        .set("ProductName", if nightly { "GridCraft Nightly" } else { "GridCraft" })
-        .set("FileDescription", if nightly { "GridCraft Nightly spreadsheet" } else { "GridCraft spreadsheet" })
-        .set("CompanyName", "Learning Machines LLC")
-        .set("LegalCopyright", "Copyright (c) the GridCraft authors. MIT OR Apache-2.0.")
+    let ico = build_channel::windows_icon_path(nightly);
+    if std::path::Path::new(ico).exists() {
+        res.set_icon(ico);
+    }
+    res.set("ProductName", if nightly { "Fogbreak Grid Nightly" } else { "Fogbreak Grid" })
+        .set("FileDescription", if nightly { "Fogbreak Grid Nightly spreadsheet" } else { "Fogbreak Grid spreadsheet" })
+        .set("CompanyName", "Fogbreak")
+        .set("LegalCopyright", "Copyright (c) the Fogbreak contributors. MIT OR Apache-2.0.")
         .set("OriginalFilename", "gridcraft.exe")
         .set("InternalName", "gridcraft");
     if nightly {

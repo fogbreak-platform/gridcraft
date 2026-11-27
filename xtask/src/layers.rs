@@ -44,6 +44,7 @@ pub const TABLE: &[(&str, Class)] = &[
     ("mcp", Class::Layer(6)),
     // L7 apps (exempt) and tooling (unchecked)
     ("gridcraft", Class::Layer(7)),
+    ("fogbreak-grid", Class::Layer(7)),
     ("cli", Class::Layer(7)),
     ("web", Class::Layer(7)),
     ("xtask", Class::Exempt),

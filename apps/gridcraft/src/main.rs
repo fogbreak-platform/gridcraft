@@ -253,12 +253,7 @@ fn open_with_system(target: &str) {
 }
 
 fn icon() -> Option<egui::IconData> {
-    #[cfg(target_os = "macos")]
-    let bytes = include_bytes!("../../../assets/app-icon/gridcraft-macos-512.png");
-    #[cfg(not(target_os = "macos"))]
-    let bytes = include_bytes!("../../../assets/app-icon/hicolor/256x256/apps/ai.storyteller.gridcraft.png");
-    let img = image::load_from_memory(bytes).ok()?.to_rgba8();
-    Some(egui::IconData { width: img.width(), height: img.height(), rgba: img.into_raw() })
+    None
 }
 
 fn initialize_nightly_process_identity() -> Result<(), process_identity::IdentityError> {
@@ -286,12 +281,12 @@ fn report_launch_profile_error(error: &str) {
         || (cfg!(target_os = "linux") && ["DISPLAY", "WAYLAND_DISPLAY"].into_iter().any(|key| std::env::var_os(key).is_some_and(|v| !v.is_empty())));
     if refusal_dialog(build_flavor::COMPILED, desktop_session, cfg!(target_os = "macos")) {
         if let Err(error) = initialize_nightly_process_identity() {
-            eprintln!("GridCraft launch profile: {error}");
+            eprintln!("Fogbreak Grid launch profile: {error}");
             return;
         }
         #[cfg(any(windows, target_os = "linux", target_os = "macos"))]
         let _ = rfd::MessageDialog::new()
-            .set_title("GridCraft Nightly")
+            .set_title("Fogbreak Grid Nightly")
             .set_description(error)
             .set_level(rfd::MessageLevel::Error)
             .set_buttons(rfd::MessageButtons::Ok)
@@ -438,20 +433,20 @@ fn main() -> eframe::Result<()> {
         && let Some(done) = craft_update::self_update::finish(&gridcraft_ui_egui::UPDATE_APP, &std::env::args_os().skip(1).collect::<Vec<_>>())
     {
         if let Err(e) = done {
-            eprintln!("GridCraft update helper failed: {e}");
+            eprintln!("Fogbreak Grid update helper failed: {e}");
             std::process::exit(1);
         }
         return Ok(());
     }
     // Before `--` only: everything after it is a file, even one named `--version`.
     if arguments.iter().take_while(|a| *a != "--").any(|a| a == "--version" || a == "-V") {
-        println!("GridCraft {}", gridcraft_ui_egui::channel::version());
+        println!("Fogbreak Grid {}", gridcraft_ui_egui::channel::version());
         return Ok(());
     }
     // The control channel is a stable-only service: a nightly window owns no port, writes no
     // token and never inherits the stable app's `GRIDCRAFT_CONTROL_PORT`/`GRIDCRAFT_CONTROL_TOKEN`.
     if nightly_control_refused(nightly, &args) {
-        eprintln!("GridCraft Nightly: the control channel is not part of the nightly channel");
+        eprintln!("Fogbreak Grid Nightly: the control channel is not part of the nightly channel");
         std::process::exit(2);
     }
     let control_port: Option<u16> = (!nightly).then(|| std::env::var("GRIDCRAFT_CONTROL_PORT").ok().and_then(|p| p.parse().ok())).flatten();
@@ -504,14 +499,14 @@ fn main() -> eframe::Result<()> {
                 && watch.previous_unclean()
             {
                 app.notice = Some(gridcraft_ui_egui::Notice {
-                    text: "The last GridCraft Nightly session did not finish cleanly. Your saved workbooks are as you left them; only unsaved changes are affected.".into(),
+                    text: "The last Fogbreak Grid Nightly session did not finish cleanly. Your saved workbooks are as you left them; only unsaved changes are affected.".into(),
                     kind: gridcraft_ui_egui::NoticeKind::Warning,
                     action: None,
                 });
                 nightly_notice_shown = true;
             }
             if unavailable {
-                log::warn!("this window shares a GridCraft Nightly profile another window owns; its exit is not recorded");
+                log::warn!("this window shares a Fogbreak Grid Nightly profile another window owns; its exit is not recorded");
             }
             *session_watch.lock().unwrap_or_else(std::sync::PoisonError::into_inner) = watch;
         }

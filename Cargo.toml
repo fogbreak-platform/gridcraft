@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["crates/*", "apps/*", "xtask"]
+members = ["crates/*", "apps/*", "fogbreak-overlay", "xtask"]
 default-members = ["crates/*", "apps/gridcraft", "apps/gridcraft-cli", "xtask"]
 
 [workspace.package]
@@ -8,7 +8,7 @@ version = "0.19.1"
 edition = "2024"
 license = "MIT OR Apache-2.0"
 rust-version = "1.95"
-repository = "https://github.com/storytold/gridcraft"
+repository = "https://github.com/fogbreak-platform/gridcraft"
 
 [workspace.dependencies]
 # internal

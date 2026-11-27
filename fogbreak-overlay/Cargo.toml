@@ -1,0 +1,43 @@
+[package]
+name = "fogbreak-grid"
+description = "Fogbreak Grid in the browser (Tidal Strata white-label overlay wrapping the full SheetApp on wasm32)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish = false
+
+[lints]
+workspace = true
+
+[[bin]]
+name = "fogbreak-grid"
+path = "src/main.rs"
+
+[dependencies]
+gridcraft-engine = { workspace = true }
+gridcraft-ui-egui = { workspace = true }
+egui = { workspace = true }
+log = { workspace = true }
+serde_json = { workspace = true }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+eframe = { workspace = true, features = ["default_fonts", "wgpu", "accesskit"] }
+rfd = { workspace = true }
+wasm-bindgen = "0.2"
+wasm-bindgen-futures = "0.4"
+js-sys = "0.3"
+web-sys = { version = "0.3", features = [
+  "Window",
+  "Document",
+  "Element",
+  "Event",
+  "EventTarget",
+  "HtmlElement",
+  "HtmlCanvasElement",
+  "Location",
+  "CssStyleDeclaration",
+  "UrlSearchParams",
+  "CustomEvent",
+  "CustomEventInit",
+  "MediaQueryList",
+] }

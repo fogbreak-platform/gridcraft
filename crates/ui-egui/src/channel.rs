@@ -55,8 +55,8 @@ pub fn app_id() -> &'static str {
 
 pub const fn name_for(channel: Channel) -> &'static str {
     match channel {
-        Channel::Stable => "GridCraft",
-        Channel::NightlyV1 => "GridCraft Nightly",
+        Channel::Stable => "Fogbreak Grid",
+        Channel::NightlyV1 => "Fogbreak Grid Nightly",
     }
 }
 
@@ -132,8 +132,8 @@ mod tests {
         assert_eq!(NIGHTLY_PACKAGE_ID, "ai.storyteller.gridcraft.nightly");
         assert_ne!(NIGHTLY_PACKAGE_ID, id_for(Channel::NightlyV1));
         assert_ne!(NIGHTLY_PACKAGE_ID, id_for(Channel::Stable));
-        assert_eq!(name_for(Channel::Stable), "GridCraft");
-        assert_eq!(name_for(Channel::NightlyV1), "GridCraft Nightly");
+        assert_eq!(name_for(Channel::Stable), "Fogbreak Grid");
+        assert_eq!(name_for(Channel::NightlyV1), "Fogbreak Grid Nightly");
         assert!(stable_services_for(Channel::Stable));
         assert!(!stable_services_for(Channel::NightlyV1));
     }
@@ -149,8 +149,8 @@ mod tests {
 
     #[test]
     fn nightly_titles_name_the_channel_and_keep_the_document() {
-        assert_eq!(window_title_for(Channel::NightlyV1, "Book1"), "Book1 \u{2014} GridCraft Nightly");
-        assert_eq!(window_title_for(Channel::NightlyV1, ""), " \u{2014} GridCraft Nightly");
+        assert_eq!(window_title_for(Channel::NightlyV1, "Book1"), "Book1 \u{2014} Fogbreak Grid Nightly");
+        assert_eq!(window_title_for(Channel::NightlyV1, ""), " \u{2014} Fogbreak Grid Nightly");
         let nightly = "0.19.1-nightly.20261124.7.1.gabcdef012345";
         assert_eq!(version_for(Channel::NightlyV1, Some(nightly)), nightly);
         assert_eq!(version_for(Channel::NightlyV1, None), env!("CARGO_PKG_VERSION"), "a nightly build without its own version is not invented");

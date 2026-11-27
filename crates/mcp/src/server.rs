@@ -15,7 +15,7 @@ pub use craft_mcp_server::{PROTOCOL_VERSION, SUPPORTED_VERSIONS};
 /// Longest accepted message line (16 MB): bigger payloads belong in files.
 pub(crate) const MAX_LINE: usize = 16 * 1024 * 1024;
 
-const INSTRUCTIONS: &str = "GridCraft is a spreadsheet app (an Excel clone). Cells use A1 notation (\"B2\", \"A1:D10\", \
+const INSTRUCTIONS: &str = "Fogbreak Grid is a spreadsheet app. Cells use A1 notation (\"B2\", \"A1:D10\", \
 \"Sheet2!A1:B3\"). Every action is a command: find ids and parameters with list_commands and run any of them with \
 execute_command. Convenience tools cover the common flow: write_range / set_cell to enter values and formulas (strings \
 starting with = are formulas), read_range / get_cell to read computed values back, format_range, create_table, \
@@ -74,7 +74,7 @@ pub struct Server {
 
 impl Server {
     pub fn new(backend: Box<dyn Backend>) -> Self {
-        let info = Info { name: "gridcraft", title: "GridCraft", version: env!("CARGO_PKG_VERSION"), max_line: MAX_LINE };
+        let info = Info { name: "gridcraft", title: "Fogbreak Grid", version: env!("CARGO_PKG_VERSION"), max_line: MAX_LINE };
         let options = Options { website_url: None, tool_errors_as_results: false, strict_request_ids: true };
         Self { inner: craft_mcp_server::Server::new(info, GridcraftTools { backend }).with_options(options) }
     }

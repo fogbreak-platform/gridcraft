@@ -66,8 +66,7 @@ pub fn install_headless(ctx: &egui::Context) {
 /// Who GridCraft is to the framework's dialogs (the update dialogs show its name and icon).
 pub(crate) fn host() -> Arc<Host> {
     Arc::new(
-        Host::builder(AppInfo { id: "gridcraft", name: "GridCraft", version: env!("CARGO_PKG_VERSION") })
-            .icon_png(include_bytes!("../../../assets/app-icon/hicolor/128x128/apps/ai.storyteller.gridcraft.png"))
+        Host::builder(AppInfo { id: "fogbreak-grid", name: "Fogbreak Grid", version: env!("CARGO_PKG_VERSION") })
             .build(),
     )
 }
