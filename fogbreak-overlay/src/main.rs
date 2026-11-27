@@ -137,7 +137,7 @@ fn wasm_main() {
             self.app.logic(ctx);
             self.app.close_path(ctx);
             let dark = *self.dark_state.lock().unwrap_or_else(|e| e.into_inner());
-            if ctx.style().visuals.dark_mode != dark {
+            if ctx.global_style().visuals.dark_mode != dark {
                 theme::apply_palette(ctx, dark);
             }
             let dirty = self.app.session.active().is_some_and(|d| d.is_dirty());
@@ -209,7 +209,7 @@ fn wasm_main() {
         }
     }
 
-    fn finish_boot(document: &web_sys::Document, canvas: &HtmlCanvasElement, result: Result<(), eframe::Error>) {
+    fn finish_boot(document: &web_sys::Document, canvas: &HtmlCanvasElement, result: Result<(), wasm_bindgen::JsValue>) {
         if let Some(el) = document.get_element_by_id(LOADING_ID) {
             match &result {
                 Ok(()) => el.remove(),
