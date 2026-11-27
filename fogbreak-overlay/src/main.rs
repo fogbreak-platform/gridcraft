@@ -310,6 +310,7 @@ fn wasm_main() {
         let actions = ActionQueue::default();
         let (req_tx, req_rx) = channel::<ControlRequest>();
         let canvas_for_boot = canvas.clone();
+        let canvas_for_app = canvas.clone();
         let result = eframe::WebRunner::new()
             .start(
                 canvas,
@@ -317,7 +318,7 @@ fn wasm_main() {
                 Box::new(move |cc| {
                     Ok(Box::new(build_shell(
                         cc,
-                        canvas_for_boot.clone(),
+                        canvas_for_app.clone(),
                         req_tx.clone(),
                         req_rx,
                         actions,
@@ -326,6 +327,6 @@ fn wasm_main() {
                 }),
             )
             .await;
-        finish_boot(&document, &canvas, result);
+        finish_boot(&document, &canvas_for_boot, result);
     });
 }
