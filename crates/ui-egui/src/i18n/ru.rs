@@ -476,8 +476,8 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
         "+ Add Level" => "+ Добавить уровень",
         "100% Stacked Bar" => "Нормированная линейчатая",
         "100% Stacked Column" => "Нормированная гистограмма",
-        "A clean-room, open-source, Rust-native spreadsheet. Part of ArtCraft." => {
-            "Электронные таблицы с открытым исходным кодом, написанные с нуля на Rust. Часть ArtCraft."
+        "A clean-room, open-source, Rust-native spreadsheet. Part of Fogbreak." => {
+            "Электронные таблицы с открытым исходным кодом, написанные с нуля на Rust. Часть Fogbreak."
         }
         "About" => "О программе",
         "Accessibility" => "Доступность",
@@ -706,7 +706,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
         "Insert…" => "Вставить…",
         "Interpolation" => "Интерполяция",
         "Interval:" => "Интервал:",
-        "Join the ArtCraft Discord" => "Присоединиться к Discord ArtCraft",
+        "Join the Fogbreak Discord" => "Присоединиться к Discord Fogbreak",
         "Justify" => "По ширине",
         "Keep" => "Оставить",
         "Keep Solver Solution" => "Оставить найденное решение",

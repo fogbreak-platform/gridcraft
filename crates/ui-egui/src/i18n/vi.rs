@@ -700,7 +700,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
         "Contributors" => "Người đóng góp",
         "Models" => "Mô hình",
         "Version {version}" => "Phiên bản {version}",
-        "Join the ArtCraft Discord" => "Tham gia Discord của ArtCraft",
+        "Join the Fogbreak Discord" => "Tham gia Discord của Fogbreak",
         "This workbook has no scripts or macros." => "Sổ làm việc này không có tập lệnh hay macro nào.",
         "(unnamed)" => "(chưa đặt tên)",
         "— VBA project (preserved, not run)" => "— Dự án VBA (được bảo toàn, không chạy)",
